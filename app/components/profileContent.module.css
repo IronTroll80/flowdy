@@ -1,0 +1,62 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    padding: 1rem
+}
+
+.title{
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.profileInfo{
+    display: flex;
+    flex-direction: column;
+    margin: 1.5rem 0;
+}
+
+.infoName{
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.infoEmail{
+    font-size: 12px;
+    font-weight: 400;
+}
+
+.profileButtons{
+    display: flex;
+    gap: 1rem;
+    margin: 1rem 0;
+    flex-direction: column;
+}
+
+.hr{
+    border: none;
+    border-top: 1px solid #e0e0e0;
+}
+
+.linksContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.link{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    font-size: 14px;
+}
+
+.link div{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.link svg{
+    stroke-width: 1px;
+}

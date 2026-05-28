@@ -1,0 +1,31 @@
+.container{
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem .5rem;
+    max-width: 420px;
+    margin: auto;
+}
+
+.right, .left{
+    display: flex;
+    align-items: center;
+}
+
+.title{
+    font-weight: 600;
+}
+
+.right{
+    gap: .5rem;
+}
+
+.locationTab{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: .5rem;
+    font-size: 12px;
+    background-color: #f0f0f0;
+    padding: .25rem .5rem;
+    border-radius: .5rem;
+}

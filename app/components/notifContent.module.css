@@ -1,0 +1,96 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+}
+
+.header{
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+    margin-bottom: 1rem;
+}
+
+.header h1{
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.notifList{
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+.notifItem{
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.notifIcon{
+    min-width: 24px;
+    min-height: 24px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+}
+
+.notifIcon svg{
+    font-size: 20px;
+    stroke-width: 1px;
+}
+
+.positive{
+    background-color: #E8F8EE;
+    color: #1E9E53;
+}
+
+.negative{
+    background-color: #FDECEC;
+    color: #D92D20;
+}
+
+.normal{
+    background-color: #AA6FED33;
+    color: #290157;
+}
+
+.positiveText{
+    color: #1E9E53;
+    font-weight: 600;
+}
+
+.negativeText{
+    color: #D92D20;
+    font-weight: 600;
+}
+
+.notifText{
+    display: flex;
+    flex-direction: column;
+    gap: .25rem;
+    flex: 1;
+}
+
+.notifTitle{
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.notifDescription{
+    font-size: 12px;
+    color: #666;
+    line-height: 1.5;
+}
+
+
+.notifTime{
+    font-size: 12px;
+    color: #999;
+    white-space: nowrap;
+}

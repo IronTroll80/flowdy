@@ -1,9 +1,11 @@
-import Login from "./auth/login/page";
+import BottomNav from "./components/bottomNav";
 
 export default function  Page(){
   return(
     <>
-      <Login/>
+
+    <BottomNav />
+      
     </>
   )
 }

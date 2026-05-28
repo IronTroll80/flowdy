@@ -1,0 +1,28 @@
+.container {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    height: 92vh;
+}
+
+.map{
+    width: 100%;
+    height: 200px;
+    background-color: #e0e0e0;
+    border-radius: .5rem;
+    position: relative;
+}
+
+.mapButton{
+    margin-top: 1rem;
+    padding: .35rem .7rem;
+    background-color: #fff;
+    color: #1c1c1c;
+    border: none;
+    border-radius: .25rem;
+    font-size: 12px;
+    cursor: pointer;
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+}

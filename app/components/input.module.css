@@ -1,0 +1,44 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 350px;
+}
+
+.mainInputTitle{
+    background-color: var(--background);
+    width: fit-content;
+    padding: .1rem .6rem;
+    font-size: 12px;
+    margin-left: 12px;
+    margin-bottom: -.3rem;
+    z-index: 1;
+    border-radius: 1rem;
+}
+
+.mainInput{
+    width: 100%;
+    background-color: #6a6a6a20;
+    height: 50px;
+    border-radius: .5rem;
+    font-size: 14px;
+    padding: 1rem;
+}
+
+.otp{
+    display: flex;
+    gap: .5rem;
+}
+
+.otpTitle{
+    font-size: 12px;
+}
+
+.otpItem{
+    background-color: #6a6a6a20;
+    width: 100%;
+    aspect-ratio: 1;
+    border-radius: .5rem;
+    margin-top: 1rem;
+    text-align: center;
+}

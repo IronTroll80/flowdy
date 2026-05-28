@@ -1,0 +1,83 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    height: 93vh;
+    width: 100%;
+    padding: 1rem;
+    max-width: 420px;
+    margin: auto;
+}
+
+
+.title{
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-top: 1rem;
+    max-width: 200px;
+}
+
+.title span{
+    color: #A230FB;
+}
+
+.subtitle{
+    font-size: .75rem;
+    line-height: 20px;
+    color: #6a6a6a;
+    max-width: 250px;
+    margin-top: .5rem;
+}
+
+.form{
+    width: 100%;
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.checkbox{
+    width: 24px;
+    aspect-ratio: 1;
+    border-radius: .25rem;
+    background-color: #aa6fed33;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.checkbox svg{
+    display: none;
+}
+
+.checkbox.checked svg{
+    display: block;
+}
+
+
+
+.terms{
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    font-size: 12px;
+}
+
+.terms span{
+    color: #A230FB;
+    font-weight: 600;
+    font-style: italic;
+}
+
+
+.signupText{
+    font-size: .75rem;
+    color: #6a6a6a;
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.signupText span{
+    color: #A230FB;
+    font-weight: 600;
+}

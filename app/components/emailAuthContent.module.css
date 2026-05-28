@@ -1,0 +1,36 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    height: 93vh;
+    width: 100%;
+    padding: 1rem;
+    max-width: 420px;
+    margin: auto;
+}
+
+.title{
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-top: 1rem;
+    max-width: 200px;
+}
+
+.title span{
+    color: #A230FB;
+}
+
+.subtitle{
+    font-size: .75rem;
+    line-height: 20px;
+    color: #6a6a6a;
+    max-width: 250px;
+    margin-top: .5rem;
+}
+
+.form{
+    width: 100%;
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}

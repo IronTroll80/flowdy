@@ -1,0 +1,35 @@
+
+.bottomNav{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: fixed;
+    bottom: 1rem;
+    left: 0;
+    margin-left: 1rem;
+    width: calc(100% - 2rem);
+    border-top: 1px solid #ccc;
+    height: 48px;
+    border-radius: 2rem;
+    box-shadow: 0px 0px 4px #00000025;
+    background-color: #fff;
+    z-index: 100;
+}
+
+.navItem{
+    transition: .2s ease-out;
+}
+
+.navItem svg{
+    stroke-width: 1px;
+}
+
+.active{
+    background-color: #AA6FED35;
+    padding: .5rem;
+    border-radius: 50%;
+}
+
+.active svg{
+    stroke: #290157;
+}

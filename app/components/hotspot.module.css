@@ -1,0 +1,107 @@
+.hotspot {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  width: 100%;
+  height: 250px;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  position: relative;
+  overflow: hidden;
+  color: #fff;
+}
+
+.hotspot::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, #00000000, #2a2a2a);
+}
+
+.hotspotImage {
+  object-fit: cover;
+  z-index: -1;
+}
+
+.hotspotInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  z-index: 1;
+}
+
+.tag {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  font-size: 10px;
+  font-weight: 600;
+  z-index: 1;
+}
+
+.hotspotHeader,
+.hotspotFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.hotspotName {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.hotspotLocation {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 12px;
+  width: 200px;
+}
+
+.hotspotLocation p {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.hotspotStatus {
+  font-size: 12px;
+  text-align: right;
+}
+
+.hotspotStatus span {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.hotspotBar {
+  width: 100%;
+  height: 4px;
+  background: #ffffff33;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.hotspotLevel {
+  height: 100%;
+  border-radius: 999px;
+}
+
+.hotspotFooter {
+  font-size: 12px;
+}
+
+.hotspotFooterText,
+.viewDetails {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.viewDetails {
+  transition: 0.2s ease;
+}
