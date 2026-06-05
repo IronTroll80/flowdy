@@ -1,0 +1,162 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+
+.back {
+  display: flex;
+  align-items: center;
+  color: inherit;
+}
+
+.back svg {
+  stroke-width: 1px;
+}
+
+.title {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.subtitle {
+  font-size: 13px;
+  color: #888;
+  margin-bottom: 2rem;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+.fieldGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 500;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.chip {
+  padding: 0.45rem 1rem;
+  border-radius: 999px;
+  border: 1px solid #e0e0e0;
+  background: transparent;
+  font-size: 13px;
+  cursor: pointer;
+  color: inherit;
+  transition: all 0.15s ease;
+}
+
+.chipActive {
+  background: #6c3bff;
+  border-color: #6c3bff;
+  color: #fff;
+}
+
+.textarea {
+  resize: none;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  padding: 0.85rem 1rem;
+  font-size: 14px;
+  font-family: inherit;
+  color: inherit;
+  background: transparent;
+  outline: none;
+  transition: border-color 0.15s ease;
+}
+
+.textarea:focus {
+  border-color: #6c3bff;
+}
+
+.textarea::placeholder {
+  color: #bbb;
+}
+
+.charCount {
+  font-size: 11px;
+  color: #bbb;
+  text-align: right;
+}
+
+.submitBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: #6c3bff;
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  padding: 0.9rem;
+  font-size: 14px;
+  font-family: inherit;
+  font-weight: 500;
+  cursor: pointer;
+  transition: opacity 0.15s ease;
+}
+
+.submitBtn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.submitBtn svg {
+  stroke-width: 1.5px;
+}
+
+/* Success state */
+.success {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 4rem 1rem;
+  text-align: center;
+}
+
+.successIcon {
+  color: #6c3bff;
+  stroke-width: 1px;
+  margin-bottom: 0.5rem;
+}
+
+.successTitle {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.successSub {
+  font-size: 13px;
+  color: #888;
+}
+
+.backLink {
+  margin-top: 1.5rem;
+  font-size: 13px;
+  color: #6c3bff;
+}

@@ -4,10 +4,14 @@ import styles from './savedContent.module.css';
 import Hotspot from './hotspot';
 import {LuSearch } from 'react-icons/lu';
 import MainButton from './mainButton';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 
 
 export default function SavedContent (){
+
+    const router = useRouter();
 
     const [auth, setAuth] = useState(false);
 
@@ -32,7 +36,7 @@ export default function SavedContent (){
             <div className={styles.noAuthContainer}>
             <h3 className={styles.messageTitle}>You’re not Signed In</h3>
             <p className={styles.message}>Sign in to save hotspots and get notifications  traffic status changes and much more! </p>
-            <MainButton title = 'Create Account or Login' onClick={() => setAuth(true)} />
+            <MainButton title = 'Create Account or Login' onClick={() => router.push('/login')}/>
         </div>}
         </div>
         

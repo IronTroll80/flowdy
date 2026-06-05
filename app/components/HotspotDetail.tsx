@@ -23,10 +23,11 @@ import {
   type ChartOptions,
 } from 'chart.js'
 import { Line } from 'react-chartjs-2'
-import styles from '../components/hotspotDetail.module.css'
+import styles from './hotspotDetail.module.css'
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Filler, Tooltip)
 
+// ── Types ────────────────────────────────────────────────────────────────────
 type TrafficLevel = 'low' | 'moderate' | 'high' | 'very-high'
 
 interface HotspotDetailProps {

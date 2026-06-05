@@ -7,6 +7,7 @@ import MainButton from './mainButton';
 import { useState } from 'react';
 import BackButton from './goBack';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 
 export default function SignupContent() {
 
@@ -32,7 +33,7 @@ export default function SignupContent() {
         </div>
       </form> 
         <MainButton title='Sign Up' onClick={()=>{router.push('/email-auth')}}/>
-        <p className={styles.signupText}>Don't have an account? <span className={styles.signUpLink}>Sign Up</span></p>
+        <p className={styles.signupText}>Already have an account? <Link href="/login" className={styles.signUpLink}>Sign In</Link></p>
     </div>
   );
 }

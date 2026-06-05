@@ -6,6 +6,7 @@ import { LuCircleUser, LuMapPin, LuX } from 'react-icons/lu'
 import { FaChevronDown } from 'react-icons/fa'
 import { useState } from 'react'
 import LocationPopup from './locationPopup'
+import LocationModal from './locationModal'
 
 export default function Header() {
 
@@ -21,16 +22,18 @@ export default function Header() {
             </div>
             <div className= {styles.right}>
                 <div className= {styles.locationTab} onClick={()=>{setIsPopupOpen(true)}}>
-                    <LuMapPin size={12} color="#1c1c1c" />
+                    <LuMapPin size={12}  />
                     <span className={styles.locationText}>Lagos, Nigeria</span>
-                    <FaChevronDown size={10} color="#1c1c1c" />
+                    <FaChevronDown size={10}  />
                 </div>
-                <LuCircleUser size={20} color="#1c1c1c" strokeWidth={1}/>
+                {/* <LuCircleUser size={20}  strokeWidth={1}/> */}
             </div>
         </div>
 
 
-       {isPopupOpen && (<LocationPopup onClose={() => setIsPopupOpen(false)} />)}
+       {isPopupOpen && (
+               <LocationModal isOpen = {true} onClose={()=>{setIsPopupOpen(false)}} onSelect={()=>{}} currentCampus='unilorin'/>
+             )}
 
         
         </>

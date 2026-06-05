@@ -1,10 +1,9 @@
 .container{
     display: flex;
     flex-direction: column;
-    height: 93vh;
+    min-height: 90vh;
     width: 100%;
     padding: 1rem;
-    max-width: 420px;
     margin: auto;
 }
 
@@ -23,7 +22,6 @@
     font-size: .75rem;
     line-height: 20px;
     color: #6a6a6a;
-    max-width: 250px;
     margin-top: .5rem;
 }
 
@@ -52,7 +50,7 @@
     margin-top: 1rem;
 }
 
-.signupText span{
+.signUpLink {
     color: #A230FB;
     font-weight: 600;
 }

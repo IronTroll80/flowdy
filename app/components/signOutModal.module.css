@@ -1,0 +1,90 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  z-index: 100;
+  display: flex;
+  align-items: flex-end;
+}
+
+.sheet {
+  width: 100%;
+  background: #fff;
+  border-radius: 20px 20px 0 0;
+  padding: 1.25rem 1.5rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  animation: slideUp 0.22s ease;
+}
+
+@keyframes slideUp {
+  from { transform: translateY(100%); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
+
+.drag {
+  width: 36px;
+  height: 4px;
+  border-radius: 999px;
+  background: #e0e0e0;
+  margin-bottom: 1rem;
+}
+
+.iconWrap {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background: #fff5f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #cc3333;
+  margin-bottom: 0.25rem;
+}
+
+.iconWrap svg {
+  stroke-width: 1px;
+}
+
+.title {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.sub {
+  font-size: 13px;
+  color: #888;
+  text-align: center;
+  margin-bottom: 0.75rem;
+}
+
+.actions {
+  display: flex;
+  gap: 0.75rem;
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+.cancel,
+.confirm {
+  flex: 1;
+  padding: 0.85rem;
+  border-radius: 12px;
+  font-size: 14px;
+  font-family: inherit;
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
+}
+
+.cancel {
+  background: #f4f4f4;
+  color: inherit;
+}
+
+.confirm {
+  background: #cc3333;
+  color: #fff;
+}
