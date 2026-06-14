@@ -29,6 +29,7 @@ export default function BottomNav() {
                     onClick={() => {setActiveTab(tab.name); router.push(tab.route);}}
                 >
                     {tab.icon}
+                    <p>{tab.name}</p>
                 </div>
             ))}
         </div>

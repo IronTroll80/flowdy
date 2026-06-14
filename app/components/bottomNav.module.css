@@ -4,13 +4,12 @@
     justify-content: space-around;
     align-items: center;
     position: fixed;
-    bottom: 1rem;
+    bottom: 0;
     left: 0;
-    margin-left: 1rem;
-    width: calc(100% - 2rem);
+    width: 100%;
     border-top: 1px solid #ccc;
-    height: 48px;
-    border-radius: 2rem;
+    height: 60px;
+    border-radius: 0px;
     box-shadow: 0px 0px 4px #00000025;
     background-color: #fff;
     z-index: 100;
@@ -18,6 +17,11 @@
 
 .navItem{
     transition: .2s ease-out;
+    display: flex;
+    flex-direction: column;
+    font-size: 12px;
+    align-items: center;
+    text-transform: capitalize;
 }
 
 .navItem svg{
@@ -26,8 +30,7 @@
 
 .active{
     background-color: #AA6FED35;
-    padding: .5rem;
-    border-radius: 50%;
+    padding: .5rem 1rem;
 }
 
 .active svg{

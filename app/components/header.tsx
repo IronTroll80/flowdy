@@ -5,7 +5,6 @@ import styles from './header.module.css'
 import { LuCircleUser, LuMapPin, LuX } from 'react-icons/lu'
 import { FaChevronDown } from 'react-icons/fa'
 import { useState } from 'react'
-import LocationPopup from './locationPopup'
 import LocationModal from './locationModal'
 
 export default function Header() {

@@ -31,10 +31,7 @@ const hotspots: HotspotCardProps[] = [
 const categories = [
   { id: 'gates',      label: 'Gates',     emoji: <LuDoorClosed/> },
   { id: 'faculties',  label: 'Faculties', emoji: <LuSchool/> },
-  { id: 'cafeterias', label: 'Cafeterias',emoji: <LuBuilding/> },
-  { id: 'libraries',  label: 'Libraries', emoji: <LuLibrary/>},
-  { id: 'hostels',    label: 'Hostels',   emoji: <LuHouse/> },
-  { id: 'banks',      label: 'Banks',     emoji: <LuBuilding2 /> },
+  { id: 'cafeterias', label: 'Cafeterias',emoji: <LuBuilding/> }
 ]
 
 export default function HomePage() {
@@ -43,12 +40,11 @@ export default function HomePage() {
     <Header />
     <div className={styles.page}>
 
-      {/* ── Hero banner ── */}
+
       <div className={styles.hero}>
         
       </div>
 
-      {/* ── Search ── */}
       <div className={styles.searchWrap}>
         <LuSearch size={16} className={styles.searchIcon} />
         <input
@@ -58,7 +54,6 @@ export default function HomePage() {
         />
       </div>
 
-      {/* ── Categories ── */}
       <div className={styles.section}>
         <div className={styles.categoryGrid}>
           {categories.map((cat) => (
