@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 // @ts-ignore: allow side-effect import for global CSS without type declarations
 import "./globals.css";
+import { AuthProvider } from '@/context/AuthProvider';
 
 const dmsans = localFont({
   src: [
@@ -38,7 +39,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${dmsans.variable} antialiased`}>
-        {children}
+        <AuthProvider>{children}</AuthProvider>
       </body>
     </html>
   );

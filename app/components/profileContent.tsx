@@ -16,34 +16,32 @@ import styles from './profileContent.module.css'
 import Link from 'next/link'
 import LocationModal from './locationModal'
 
-const campuses = [
-  { id: 'unilorin', name: 'University of Ilorin', short: 'UNILORIN' },
-]
+import { supabase } from '@/lib/supabase'
+import { useAuth } from '@/context/AuthProvider'
+import { useRouter } from 'next/navigation'
+import { useEffect } from 'react'
 
 export default function ProfileContent() {
   const [signOutOpen, setSignOutOpen] = useState(false)
   const [locationOpen, setLocationOpen] = useState(false)
-  const [selectedCampus, setSelectedCampus] = useState('')
-  const [detecting, setDetecting] = useState(false)
+  
 
-  const handleDetect = () => {
-    setDetecting(true)
-    // TODO: wire up real geolocation
-    setTimeout(() => {
-      setDetecting(false)
-      setSelectedCampus('unilorin')
-    }, 1500)
-  }
+  const handleSignOut = async () => {
+    await supabase.auth.signOut()
 
-  const handleSignOut = () => {
-    // TODO: call your sign-out logic here
     setSignOutOpen(false)
+
+    router.push('/login')
   }
 
-  const handleLocationConfirm = () => {
-    // TODO: persist selectedCampus
-    setLocationOpen(false)
-  }
+  const { user, loading } = useAuth()
+  const router = useRouter()
+
+    useEffect(() => {
+    if (!loading && !user) {
+      router.push('/login')
+    }
+  }, [user, loading, router])
 
   const links = [
     {
@@ -93,12 +91,20 @@ export default function ProfileContent() {
 
   return (
     <>
-      <div className={styles.container}>
-        <h1 className={styles.title}>Profile</h1>
+
+      {loading ? (
+        <div className="w-full h-48 bg-muted animate-pulse rounded-xl" />
+      ) : (
+        <div className={styles.container}>
+          <h1 className={styles.title}>Profile</h1>
 
         <div className={styles.profileInfo}>
-          <p className={styles.infoName}>John Doe</p>
-          <p className={styles.infoEmail}>john.doe@example.com</p>
+          <p className={styles.infoName}>
+            {user?.email?.split('@')[0] || 'Guest'}
+          </p>
+          <p className={styles.infoEmail}>
+            {user?.email || 'Not signed in'}
+          </p>
         </div>
 
         <div className={styles.profileButtons}>
@@ -139,7 +145,7 @@ export default function ProfileContent() {
             ))}
           </div>
         </div>
-      </div>
+      </div>)}
 
       {/* ── Sign Out Modal ── */}
       {signOutOpen && (
