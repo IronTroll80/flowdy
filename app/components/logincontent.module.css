@@ -1,10 +1,17 @@
+
 .container{
-    display: flex;
-    flex-direction: column;
-    min-height: 90vh;
-    width: 100%;
-    padding: 1rem;
-    margin: auto;
+
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 1rem;
+  background: #fafafa;
+}
+
+.container{
+  padding-bottom: env(safe-area-inset-bottom);
+  padding-top: env(safe-area-inset-top);
 }
 
 .title{
@@ -31,6 +38,12 @@
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
+}
+
+.buttonContainer{
+    position: absolute;
+    bottom: 1rem;
+    width: calc(100% - 2rem);
 }
 
 .forgotPassword{

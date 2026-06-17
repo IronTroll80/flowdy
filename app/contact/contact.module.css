@@ -2,13 +2,27 @@
   display: flex;
   flex-direction: column;
   padding: 1rem;
+  gap: 1rem;
+  background: #fafafa;
 }
 
+/* ───── header ───── */
 .header {
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  margin-bottom: 1.25rem;
+}
+
+.header h1 {
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.header p {
+  font-size: 12px;
+  color: #6b7280;
+  margin: 2px 0 0;
 }
 
 .back {
@@ -17,41 +31,38 @@
   color: inherit;
 }
 
-.back svg {
-  stroke-width: 1px;
-}
-
-.title {
-  font-size: 16px;
-  font-weight: 500;
-}
-
-.subtitle {
-  font-size: 13px;
-  color: #888;
-  margin-bottom: 2rem;
-}
-
-.form {
+/* ───── main card ───── */
+.card {
   display: flex;
   flex-direction: column;
-  gap: 1.75rem;
+  gap: 1.5rem;
+
+  padding: 1rem;
+
+  background: #ffffff;
+
+  border-radius: 20px;
+
+  box-shadow:
+    0 10px 30px rgba(17, 24, 39, 0.06);
 }
 
+/* ───── field groups ───── */
 .fieldGroup {
   display: flex;
   flex-direction: column;
   gap: 0.6rem;
 }
 
-.label {
-  font-size: 12px;
-  font-weight: 500;
-  color: #666;
+.fieldGroup label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
-  letter-spacing: 0.04em;
+  color: #6b7280;
 }
 
+/* ───── chips (now soft pills) ───── */
 .chips {
   display: flex;
   flex-wrap: wrap;
@@ -59,104 +70,147 @@
 }
 
 .chip {
-  padding: 0.45rem 1rem;
+  padding: 0.5rem 0.9rem;
+
   border-radius: 999px;
-  border: 1px solid #e0e0e0;
-  background: transparent;
-  font-size: 13px;
+  border: none;
+
+  background: #f3f4f6;
+
+  font-size: 12px;
+
   cursor: pointer;
-  color: inherit;
-  transition: all 0.15s ease;
+
+  transition: all 0.2s ease;
+
+  color: #374151;
 }
 
 .chipActive {
-  background: #6c3bff;
-  border-color: #6c3bff;
-  color: #fff;
+  background: #ede9fe;
+  color: #6d28d9;
+  font-weight: 600;
 }
 
+/* ───── textarea (soft input) ───── */
 .textarea {
   resize: none;
-  border: 1px solid #e0e0e0;
-  border-radius: 12px;
-  padding: 0.85rem 1rem;
+
+  border: none;
+
+  border-radius: 14px;
+
+  padding: 0.9rem 1rem;
+
   font-size: 14px;
-  font-family: inherit;
-  color: inherit;
-  background: transparent;
+
+  background: #f9fafb;
+
   outline: none;
-  transition: border-color 0.15s ease;
+
+  transition: background 0.2s ease;
 }
 
 .textarea:focus {
-  border-color: #6c3bff;
+  background: #f3f4f6;
 }
 
 .textarea::placeholder {
-  color: #bbb;
+  color: #9ca3af;
 }
 
+/* ───── counter ───── */
 .charCount {
   font-size: 11px;
-  color: #bbb;
+  color: #9ca3af;
   text-align: right;
 }
 
+/* ───── button ───── */
 .submitBtn {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  background: #6c3bff;
-  color: #fff;
-  border: none;
-  border-radius: 12px;
+
   padding: 0.9rem;
+
+  border-radius: 16px;
+  border: none;
+
+  background: #6d28d9;
+  color: white;
+
   font-size: 14px;
-  font-family: inherit;
-  font-weight: 500;
+  font-weight: 600;
+
   cursor: pointer;
-  transition: opacity 0.15s ease;
+
+  transition: transform 0.15s ease, opacity 0.2s ease;
+}
+
+.submitBtn:active {
+  transform: scale(0.98);
 }
 
 .submitBtn:disabled {
   opacity: 0.4;
-  cursor: not-allowed;
 }
 
-.submitBtn svg {
-  stroke-width: 1.5px;
-}
-
-/* Success state */
-.success {
+/* ───── success state ───── */
+.successCard {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  padding: 4rem 1rem;
+
   text-align: center;
+
+  padding: 3rem 1.5rem;
+
+  background: #ffffff;
+
+  border-radius: 22px;
+
+  box-shadow:
+    0 12px 40px rgba(17, 24, 39, 0.08);
 }
 
-.successIcon {
-  color: #6c3bff;
-  stroke-width: 1px;
-  margin-bottom: 0.5rem;
+.successIconWrap {
+  width: 52px;
+  height: 52px;
+
+  border-radius: 18px;
+
+  background: #ede9fe;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #6d28d9;
+
+  margin-bottom: 0.75rem;
 }
 
-.successTitle {
+.successCard h2 {
   font-size: 18px;
-  font-weight: 600;
+  font-weight: 700;
+  margin: 0;
 }
 
-.successSub {
+.successCard p {
   font-size: 13px;
-  color: #888;
+  color: #6b7280;
+  margin-top: 0.4rem;
 }
 
-.backLink {
+.successBtn {
   margin-top: 1.5rem;
+
   font-size: 13px;
-  color: #6c3bff;
+  font-weight: 600;
+
+  color: #6d28d9;
+
+  text-decoration: none;
 }

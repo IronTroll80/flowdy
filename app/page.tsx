@@ -1,12 +1,20 @@
 'use client'
 
-import { LuSearch, LuChevronRight, LuDoorClosed, LuSchool, LuBuilding, LuLibrary, LuHouse, LuBuilding2 } from 'react-icons/lu'
+import { useEffect, useState } from 'react'
+import {
+  LuSearch,
+  LuChevronRight,
+  LuDoorClosed,
+  LuSchool,
+  LuBuilding2
+} from 'react-icons/lu'
+
 import HotspotCard from './components/HotspotCard'
 import styles from './components/home.module.css'
 import Header from './components/header'
 import BottomNav from './components/bottomNav'
-import { useEffect, useState } from 'react'
 import { getHotspots } from '../lib/hotspot'
+import HotspotSkeleton from './components/hotspotSkeleton'
 
 const categories = [
   {
@@ -28,94 +36,105 @@ const categories = [
     className: styles.smallCard
   }
 ]
-export default function HomePage() {
 
-    const [hotspots, setHotspots] = useState<any[]>([])
+export default function HomePage() {
+  const [hotspots, setHotspots] = useState<any[]>([])
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     const load = async () => {
-      const data = await getHotspots()
-      setHotspots(data)
+      try {
+        setLoading(true)
+        const data = await getHotspots()
+        setHotspots(data)
+      } finally {
+        setLoading(false)
+      }
     }
 
     load()
   }, [])
 
   function calculateMinutesAgo(dateString: string) {
-  const diff = Date.now() - new Date(dateString).getTime()
-  return Math.floor(diff / 60000)
+    const diff = Date.now() - new Date(dateString).getTime()
+    return Math.floor(diff / 60000)
   }
-
 
   return (
     <>
-    <Header />
-    <div className={styles.page}>
+      <Header />
 
+      <div className={styles.page}>
 
-      <div className={styles.hero}>
-        
-      </div>
+        <div className={styles.hero} />
 
-      <div className={styles.searchWrap}>
-        <LuSearch size={16} className={styles.searchIcon} />
-        <input
-          className={styles.searchInput}
-          type="text"
-          placeholder="Search locations…"
-        />
-      </div>
+        <div className={styles.searchWrap}>
+          <LuSearch size={16} className={styles.searchIcon} />
+          <input
+            className={styles.searchInput}
+            type="text"
+            placeholder="Search locations…"
+          />
+        </div>
 
-      <div className={styles.section}>
-        <div className={styles.categoryGrid}>
-          {categories.map((cat) => (
-            <button
-              key={cat.id}
-              className={`${styles.categoryCard} ${cat.className}`}
-            >
-              <span className={styles.categoryIcon}>
-                {cat.icon}
-              </span>
-
-              <div>
-                <p className={styles.categoryTitle}>{cat.label}</p>
-                <span className={styles.categorySubtitle}>
-                  Explore locations
+        {/* ───── Categories ───── */}
+        <div className={styles.section}>
+          <div className={styles.categoryGrid}>
+            {categories.map((cat) => (
+              <button
+                key={cat.id}
+                className={`${styles.categoryCard} ${cat.className}`}
+              >
+                <span className={styles.categoryIcon}>
+                  {cat.icon}
                 </span>
-              </div>
+
+                <div>
+                  <p className={styles.categoryTitle}>{cat.label}</p>
+                  <span className={styles.categorySubtitle}>
+                    Explore locations
+                  </span>
+                </div>
+              </button>
+            ))}
+          </div>
+        </div>
+
+        <div className={styles.section}>
+          <div className={styles.sectionHeader}>
+            <p className={styles.sectionTitle}>Nearby Hotspots</p>
+            <button className={styles.seeAll}>
+              See all <LuChevronRight size={14} />
             </button>
-          ))}
-        </div>
-      </div>
+          </div>
 
-      {/* ── Hotspots ── */}
-      <div className={styles.section}>
-        <div className={styles.sectionHeader}>
-          <p className={styles.sectionTitle}>Nearby Hotspots</p>
-          <button className={styles.seeAll}>
-            See all <LuChevronRight size={14} />
-          </button>
-        </div>
-
+          
         <div className={styles.hotspotList}>
-          {hotspots.map((h: any) => (
-            <HotspotCard
-              key={h.id}
-              id={h.id}
-              name={h.name}
-              address={h.address}
-              imageUrl={h.image_url}
-              trafficRating={h.traffic_rating}
-              trafficLevel={h.traffic_level}
-              estimatedPeople={h.estimated_people}
-              updatedMinsAgo={calculateMinutesAgo(h.updated_at)}
-            />
-          ))}
+          {loading
+            ? Array.from({ length: 4 }).map((_, i) => (
+                <HotspotSkeleton key={i} />
+              ))
+            : hotspots.map((h: any) => (
+                <HotspotCard
+                  key={h.id}
+                  id={h.id}
+                  name={h.name}
+                  address={h.address}
+                  imageUrl={h.image_url}
+                  trafficRating={h.traffic_rating}
+                  trafficLevel={h.traffic_level}
+                  estimatedPeople={h.estimated_people}
+                  updatedMinsAgo={calculateMinutesAgo(h.updated_at)}
+                />
+              ))}
         </div>
-      </div>
+            </div>
+          
+        </div>
 
-    </div>
-    <BottomNav />
+      
+
+      <BottomNav />
     </>
   )
 }

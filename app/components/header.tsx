@@ -22,7 +22,7 @@ export default function Header() {
             <div className= {styles.right}>
                 <div className= {styles.locationTab} onClick={()=>{setIsPopupOpen(true)}}>
                     <LuMapPin size={12}  />
-                    <span className={styles.locationText}>Lagos, Nigeria</span>
+                    <span className={styles.locationText}>Ilorin, Kwara State</span>
                     <FaChevronDown size={10}  />
                 </div>
                 {/* <LuCircleUser size={20}  strokeWidth={1}/> */}

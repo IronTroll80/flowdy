@@ -149,9 +149,38 @@
   font-size: 0.75rem;
   color: #6b7280;
 }
-/* ── Hotspot list ── */
 .hotspotList {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+}
+
+.loadingContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 0.75rem;
+
+  padding: 2rem;
+
+  color: #6b7280;
+}
+
+.spinner {
+  width: 28px;
+  height: 28px;
+
+  border-radius: 50%;
+
+  border: 3px solid #e5e7eb;
+  border-top-color: #6d28d9;
+
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
 }

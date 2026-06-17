@@ -53,6 +53,11 @@
     display: block;
 }
 
+.buttonContainer{
+    position: absolute;
+    bottom: 1rem;
+    width: calc(100% - 2rem);
+}
 
 
 .terms{

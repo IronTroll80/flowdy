@@ -102,17 +102,18 @@ export default function LoginContent() {
         )}
       </form>
 
+      <div className = {styles.buttonContainer}>
       <MainButton
         title={loading ? 'Logging in...' : 'Login'}
         onClick={handleLogin}
       />
-
       <p className={styles.signupText}>
         Don't have an account?{' '}
         <Link href="/signup" className={styles.signUpLink}>
           Sign Up
-        </Link>
+        </Link> 
       </p>
+      </div>
     </div>
   )
 }

@@ -3,7 +3,7 @@
 import styles from './bottomNav.module.css'
 import { useRouter, usePathname } from 'next/navigation'
 import { useMemo } from 'react'
-import { LuHouse, LuBookmark, LuMap, LuUser } from 'react-icons/lu'
+import { LuHouse, LuBookmark, LuMap, LuUser, LuCreditCard } from 'react-icons/lu'
 
 export default function BottomNav() {
   const router = useRouter()
@@ -12,7 +12,7 @@ export default function BottomNav() {
   const tabs = [
     { name: 'home', Icon: LuHouse, route: '/', label: 'Home' },
     { name: 'saved', Icon: LuBookmark, route: '/saved', label: 'Saved' },
-    { name: 'map', Icon: LuMap, route: '/map', label: 'Map' },
+    { name: 'Flowpass', Icon: LuCreditCard, route: '/flowpass', label: 'Flowpass' },
     { name: 'profile', Icon: LuUser, route: '/profile', label: 'Profile' },
   ]
 

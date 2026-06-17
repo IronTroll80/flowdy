@@ -115,7 +115,8 @@ export default function SignupContent() {
 
         {error && <p style={{ color: 'red' }}>{error}</p>}
       </form>
-
+      
+      <div className = {styles.buttonContainer}>
       <MainButton
         title={loading ? 'Creating Account...' : 'Sign Up'}
         onClick={handleSignup}
@@ -127,6 +128,7 @@ export default function SignupContent() {
           Sign In
         </Link>
       </p>
+      </div>
     </div>
   );
 }
