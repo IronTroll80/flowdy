@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { LuClock, LuUsers } from 'react-icons/lu'
+import { LuClock, LuUsers, LuMapPin, LuArrowRight } from 'react-icons/lu'
 import styles from './hotspotCard.module.css'
 
 export type TrafficLevel = 'low' | 'moderate' | 'high' | 'very-high'
@@ -15,11 +15,12 @@ export interface HotspotCardProps {
   updatedMinsAgo: number
 }
 
-const levelMeta: Record<TrafficLevel, { label: string; color: string; bar: string }> = {
-  low:       { label: 'Low',       color: '#22c55e', bar: '#22c55e' },
-  moderate:  { label: 'Moderate',  color: '#f59e0b', bar: '#f59e0b' },
-  high:      { label: 'High',      color: '#ef4444', bar: '#ef4444' },
-  'very-high': { label: 'Very High', color: '#cc3333', bar: '#cc3333' },
+// Added RGB values to easily create soft translucent backgrounds
+const levelMeta: Record<TrafficLevel, { label: string; color: string; rgb: string }> = {
+  low:         { label: 'Low',       color: '#22c55e', rgb: '34, 197, 94' },
+  moderate:    { label: 'Moderate',  color: '#f59e0b', rgb: '245, 158, 11' },
+  high:        { label: 'High',      color: '#ef4444', rgb: '239, 68, 68' },
+  'very-high': { label: 'Very High', color: '#cc3333', rgb: '204, 51, 51' },
 }
 
 export default function HotspotCard({
@@ -36,14 +37,26 @@ export default function HotspotCard({
 
   return (
     <Link href={`/hotspot/${id}`} className={styles.card}>
-      {/* Image with overlaid status pill */}
+      {/* Image with overlaid status pills */}
       <div className={styles.imageWrap}>
         <img src={imageUrl} alt={name} className={styles.image} />
-        <span className={styles.pill} style={{ background: meta.color }}>
+        
+        {/* Traffic Level Pill with pulsing "Live" dot */}
+        <span 
+          className={styles.pill} 
+          style={{ 
+            background: `rgba(${meta.rgb}, 0.15)`, 
+            color: meta.color,
+            border: `1px solid rgba(${meta.rgb}, 0.2)`
+          }}
+        >
+          <span className={styles.pulseDot} style={{ background: meta.color }} />
           {meta.label}
         </span>
+
+        {/* People Count Tag (Glassmorphism) */}
         <div className={styles.peopleTag}>
-          <LuUsers size={11} />
+          <LuUsers size={12} />
           <span>{estimatedPeople}</span>
         </div>
       </div>
@@ -53,13 +66,20 @@ export default function HotspotCard({
         <div className={styles.topRow}>
           <div className={styles.nameBlock}>
             <p className={styles.name}>{name}</p>
-            <p className={styles.address}>{address}</p>
+            <p className={styles.address}>
+              <LuMapPin size={12} />
+              {address}
+            </p>
           </div>
-          <div className={styles.ratingBlock}>
+          
+          {/* Traffic Rating Badge */}
+          <div 
+            className={styles.ratingBlock} 
+            style={{ background: `rgba(${meta.rgb}, 0.12)` }}
+          >
             <span className={styles.ratingNum} style={{ color: meta.color }}>
               {trafficRating}%
             </span>
-            <span className={styles.ratingLabel}>Traffic</span>
           </div>
         </div>
 
@@ -67,14 +87,19 @@ export default function HotspotCard({
         <div className={styles.barTrack}>
           <div
             className={styles.barFill}
-            style={{ width: `${trafficRating}%`, background: meta.bar }}
+            style={{ width: `${trafficRating}%`, background: meta.color }}
           />
         </div>
 
         {/* Footer */}
         <div className={styles.footer}>
-          <LuClock size={12} />
-          <span>Updated {updatedMinsAgo} min ago</span>
+          <div className={styles.footerLeft}>
+            <LuClock size={13} />
+            <span>Updated {updatedMinsAgo} min ago</span>
+          </div>
+          <div className={styles.footerArrow}>
+            <LuArrowRight size={14} />
+          </div>
         </div>
       </div>
     </Link>

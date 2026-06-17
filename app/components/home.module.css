@@ -8,7 +8,7 @@
 .hero {
   margin: 0 1rem;
   border-radius: 4px;
-  background: url('/promo.png');
+  background: url('/promo.jpg');
   padding: 1.5rem 1.25rem 1.25rem;
   position: relative;
   overflow: hidden;
@@ -83,44 +83,72 @@
   stroke-width: 2px;
 }
 
-/* ── Category chips ── */
 .categoryGrid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 0.6rem;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 90px 90px;
+  gap: 0.75rem;
 }
 
-.categoryChip {
+.categoryCard {
+  border: none;
+  border-radius: 22px;
+  padding: 1rem;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 5px;
-  padding: 0.7rem 0.4rem;
-  border-radius: 14px;
-  border: 1px solid #eeeeee;
-  background: #fff;
+  justify-content: space-between;
+  align-items: flex-start;
+  text-align: left;
   cursor: pointer;
-  font-family: inherit;
-  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  gap: .5rem;
+  transition: transform 0.2s ease;
 }
 
-.categoryChip:active {
-  border-color: #290157;
-  box-shadow: 0 0 0 3px rgba(108, 59, 255, 0.08);
+.categoryCard:nth-child(1){
+  flex-direction: column;
+  }
+
+.categoryCard:active {
+  transform: scale(0.98);
 }
 
-.categoryEmoji {
-  font-size: 20px;
-  line-height: 1;
-  color:#290157;
+.largeCard {
+  grid-row: span 2;
+  background: #ede9fe; /* lavender */
 }
 
-.categoryLabel {
-  font-size: 11px;
-  font-weight: 500;
-  color: #555;
+.smallCard:nth-child(2) {
+  background: #dbeafe; /* pastel blue */
 }
 
+.smallCard:nth-child(3) {
+  background: #dcfce7; /* pastel green */
+}
+
+.categoryIcon {
+  width: 42px;
+  height: 42px;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  background: rgba(255,255,255,0.5);
+  color: #290157;
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+.categoryTitle {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin: 0;
+  color: #111827;
+}
+
+.categorySubtitle {
+  display: block;
+  margin-top: 4px;
+  font-size: 0.75rem;
+  color: #6b7280;
+}
 /* ── Hotspot list ── */
 .hotspotList {
   display: flex;

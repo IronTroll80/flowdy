@@ -1,41 +1,58 @@
 'use client'
 
-import styles from './bottomNav.module.css';
-import { useRouter, usePathname } from 'next/navigation';
-import { useState } from 'react';
-import { LuBookmark, LuHouse, LuMap, LuUser } from 'react-icons/lu';
+import styles from './bottomNav.module.css'
+import { useRouter, usePathname } from 'next/navigation'
+import { useMemo } from 'react'
+import { LuHouse, LuBookmark, LuMap, LuUser } from 'react-icons/lu'
 
 export default function BottomNav() {
-  const router = useRouter();  
-  const pathname = usePathname(); 
-  const [activeTab, setActiveTab] = useState('');
+  const router = useRouter()
+  const pathname = usePathname()
 
   const tabs = [
-    { name: 'home', icon: <LuHouse size={24} />, route: '/' },
-    { name: 'saved', icon: <LuBookmark size={24} />, route: '/saved' },
-    { name: 'map', icon: <LuMap size={24} />, route: '/map' },
-    { name: 'profile', icon: <LuUser size={24} />, route: '/profile' },
-  ];
+    { name: 'home', Icon: LuHouse, route: '/', label: 'Home' },
+    { name: 'saved', Icon: LuBookmark, route: '/saved', label: 'Saved' },
+    { name: 'map', Icon: LuMap, route: '/map', label: 'Map' },
+    { name: 'profile', Icon: LuUser, route: '/profile', label: 'Profile' },
+  ]
+
+  const activeIndex = useMemo(() => {
+    const idx = tabs.findIndex(t => pathname === t.route)
+    return idx >= 0 ? idx : 0
+  }, [pathname])
 
   return (
-    <>
-    
-    <div className= {styles.container}>
-        <div className = {styles.bottomNav}>
-            {tabs.map((tab) => (
-                <div
-                    key={tab.name}
-                    className={`${styles.navItem} ${activeTab === tab.name ? styles.active : ''} ${pathname === tab.route ? styles.active : ''}`}
-                    onClick={() => {setActiveTab(tab.name); router.push(tab.route);}}
-                >
-                    {tab.icon}
-                    <p>{tab.name}</p>
-                </div>
-            ))}
-        </div>
-    </div>
-    
-    </>
-  )
+    <div className={styles.container}>
+      <nav className={styles.bottomNav} role="tablist">
 
+        {/* pastel sliding pill */}
+        <div
+          className={styles.indicator}
+          style={{ transform: `translateX(${activeIndex * 100}%)` }}
+        />
+
+        {tabs.map((tab, index) => {
+          const { Icon } = tab
+          const isActive = index === activeIndex
+
+          return (
+            <button
+              key={tab.name}
+              className={`${styles.navItem} ${isActive ? styles.active : ''}`}
+              onClick={() => router.push(tab.route)}
+              role="tab"
+            >
+              <span className={styles.iconWrapper}>
+                <Icon size={22} />
+              </span>
+
+              <span className={styles.label}>
+                {tab.label}
+              </span>
+            </button>
+          )
+        })}
+      </nav>
+    </div>
+  )
 }

@@ -1,25 +1,32 @@
+/* ── Card Container ── */
 .card {
   display: flex;
   flex-direction: column;
-  border-radius: 4px;
+  border-radius: 24px; /* Much more modern, app-like radius */
   overflow: hidden;
-  background: #fff;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
+  background: #ffffff;
+  box-shadow: 
+    0 4px 6px -1px rgba(0, 0, 0, 0.02),
+    0 10px 15px -3px rgba(0, 0, 0, 0.04),
+    0 20px 25px -5px rgba(0, 0, 0, 0.02);
   text-decoration: none;
   color: inherit;
-  transition: transform 0.18s ease, box-shadow 0.18s ease;
+  border: 1px solid rgba(0, 0, 0, 0.03);
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
+  will-change: transform;
 }
 
+/* Premium press-down effect */
 .card:active {
-  transform: scale(0.985);
-  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.08);
+  transform: scale(0.97);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
-/* ── Image ── */
+/* ── Image Area ── */
 .imageWrap {
   position: relative;
   width: 100%;
-  aspect-ratio: 16 / 7;
+  aspect-ratio: 16 / 10; /* Better mobile proportion than 16/7 */
   overflow: hidden;
 }
 
@@ -28,123 +35,209 @@
   height: 100%;
   object-fit: cover;
   display: block;
+  transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
+/* Image zooms in slightly when card is pressed */
+.card:active .image {
+  transform: scale(1.06);
+}
+
+/* Gradient overlay to ensure text/pills are always readable */
+.imageWrap::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.4) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ── Overlays (Pills & Tags) ── */
 .pill {
   position: absolute;
-  top: 10px;
-  left: 10px;
-  padding: 3px 10px;
+  top: 14px;
+  left: 14px;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
   border-radius: 999px;
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 600;
-  color: #fff;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.01em;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.pulseDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.pulseDot::after {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: 0.4;
+  animation: pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 0.4; }
+  50% { transform: scale(2.2); opacity: 0; }
 }
 
 .peopleTag {
   position: absolute;
-  bottom: 10px;
-  right: 10px;
+  bottom: 14px;
+  right: 14px;
+  z-index: 2;
   display: flex;
   align-items: center;
-  gap: 4px;
-  background: rgba(0, 0, 0, 0.55);
-  backdrop-filter: blur(4px);
+  gap: 5px;
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   color: #fff;
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 500;
-  padding: 3px 8px;
+  padding: 6px 10px;
   border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .peopleTag svg {
-  stroke-width: 1.5px;
+  stroke-width: 2px;
   flex-shrink: 0;
 }
 
-/* ── Body ── */
+/* ── Body Content ── */
 .body {
-  padding: 0.85rem 1rem 0.9rem;
+  padding: 16px 18px 18px;
   display: flex;
   flex-direction: column;
-  gap: 0.55rem;
+  gap: 14px;
 }
 
 .topRow {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  gap: 0.5rem;
+  gap: 12px;
 }
 
 .nameBlock {
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 4px;
   flex: 1;
   min-width: 0;
 }
 
 .name {
-  font-size: 14px;
-  font-weight: 600;
+  font-size: 17px;
+  font-weight: 700;
+  color: #111827;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  line-height: 1.3;
 }
 
 .address {
-  font-size: 11px;
-  color: #999;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 13px;
+  color: #6b7280;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  line-height: 1.4;
+}
+
+.address svg {
+  flex-shrink: 0;
+  stroke-width: 2px;
+  opacity: 0.7;
 }
 
 .ratingBlock {
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 12px;
+  border-radius: 14px;
   flex-shrink: 0;
+  min-width: 56px;
+  line-height: 1;
 }
 
 .ratingNum {
   font-size: 18px;
-  font-weight: 700;
-  line-height: 1;
+  font-weight: 800;
+  letter-spacing: -0.02em;
 }
 
-.ratingLabel {
-  font-size: 10px;
-  color: #aaa;
-  letter-spacing: 0.03em;
-}
-
-/* ── Traffic bar ── */
+/* ── Traffic Bar ── */
 .barTrack {
-  height: 4px;
+  height: 6px;
   border-radius: 999px;
-  background: #f0f0f0;
+  background: #f3f4f6;
   overflow: hidden;
 }
 
 .barFill {
   height: 100%;
   border-radius: 999px;
-  transition: width 0.4s ease;
+  transition: width 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 /* ── Footer ── */
 .footer {
   display: flex;
   align-items: center;
-  gap: 5px;
-  font-size: 11px;
-  color: #bbb;
+  justify-content: space-between;
+  padding-top: 14px;
+  border-top: 1px solid #f3f4f6;
+  font-size: 12px;
+  color: #9ca3af;
+  font-weight: 500;
+}
+
+.footerLeft {
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
 
 .footer svg {
-  stroke-width: 1.5px;
+  stroke-width: 2px;
   flex-shrink: 0;
+}
+
+.footerArrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: #f3f4f6;
+  color: #6b7280;
+  transition: background 0.2s, color 0.2s, transform 0.2s;
+}
+
+/* Arrow nudges right on press */
+.card:active .footerArrow {
+  background: #e5e7eb;
+  transform: translateX(2px);
 }
