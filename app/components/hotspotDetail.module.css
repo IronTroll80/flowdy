@@ -258,3 +258,15 @@
   height: 180px;
   position: relative;
 }
+
+.saveBtn {
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  background: #f4f4f6;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}

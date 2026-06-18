@@ -53,6 +53,7 @@ export default function SignupContent() {
         return;
       }
 
+      localStorage.setItem('signup_email', email);
       router.push('/email-auth');
     } catch (err) {
       setError('Something went wrong');

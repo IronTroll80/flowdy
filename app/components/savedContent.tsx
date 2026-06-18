@@ -7,14 +7,15 @@ import MainButton from './mainButton'
 import { useRouter } from 'next/navigation'
 import HotspotCard from './HotspotCard'
 import { getHotspots } from '../../lib/hotspot'
-import { supabase } from '@/lib/supabase'
 import HotspotSkeleton from './hotspotSkeleton'
+import { useUserProfile } from '../hooks/useUserProfile'
+import { getSavedPlaces } from '@/lib/savedPlaces'
 
 export default function SavedContent() {
   const router = useRouter()
 
-  const [user, setUser] = useState<any>(null)
-  const [loading, setLoading] = useState(true)
+  const { user, profile, loading } = useUserProfile()
+
   const [hotspots, setHotspots] = useState<any[]>([])
   const [fetchingHotspots, setFetchingHotspots] = useState(false)
 
@@ -23,39 +24,26 @@ export default function SavedContent() {
     return Math.floor(diff / 60000)
   }
 
-  // ─── AUTH CHECK ───
-  useEffect(() => {
-    const checkUser = async () => {
-      setLoading(true)
+useEffect(() => {
+  const loadSaved = async () => {
+    if (!user) return
 
-      const { data } = await supabase.auth.getUser()
+    setFetchingHotspots(true)
 
-      setUser(data?.user ?? null)
-      setLoading(false)
+    try {
+      const data = await getSavedPlaces(user.id)
+
+      const formatted = data.map((item: any) => item.hotspots)
+
+      setHotspots(formatted)
+    } finally {
+      setFetchingHotspots(false)
     }
+  }
 
-    checkUser()
-  }, [])
+  loadSaved()
+}, [user])
 
-  // ─── FETCH HOTSPOTS ONLY IF LOGGED IN ───
-  useEffect(() => {
-    const loadHotspots = async () => {
-      if (!user) return
-
-      setFetchingHotspots(true)
-
-      try {
-        const data = await getHotspots()
-        setHotspots(data)
-      } finally {
-        setFetchingHotspots(false)
-      }
-    }
-
-    loadHotspots()
-  }, [user])
-
-  // ─── LOADING STATE ───
   if (loading) {
     return (
       <div className={styles.loadingContainer}>
@@ -65,7 +53,7 @@ export default function SavedContent() {
     )
   }
 
-  // ─── NOT LOGGED IN ───
+
   if (!user) {
     return (
       <div className={styles.container}>
@@ -89,19 +77,18 @@ export default function SavedContent() {
     )
   }
 
-  // ─── LOGGED IN ───
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>Saved Hotspots</h1>
 
-      <div className={styles.searchContainer}>
-        <input
-          type="text"
-          placeholder="Search saved hotspots..."
-          className={styles.searchInput}
-        />
-        <LuSearch size={18} className={styles.searchIcon} />
-      </div>
+      <div className={styles.searchWrap}>
+          <LuSearch size={16} className={styles.searchIcon} />
+          <input
+            className={styles.searchInput}
+            type="text"
+            placeholder="Search locations…"
+          />
+        </div>
 
         <div className={styles.hotspotList}>
           {fetchingHotspots
