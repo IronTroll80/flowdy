@@ -4,7 +4,7 @@
   "description": "Logistics Made Simpler",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#f2f2f2",
+  "background_color": "#290157",
   "theme_color": "#290157",
   "icons": [
     {
