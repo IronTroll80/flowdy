@@ -4,6 +4,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { AuthProvider } from '@/context/AuthProvider';
 import WelcomeModal from "./components/welcomeModal";
+import ServiceWorkerRegister from "./components/serviceWorkerRegister";
 
 const dmsans = localFont({
   src: [
@@ -30,7 +31,16 @@ const dmsans = localFont({
 export const metadata: Metadata = {
   title: "Flowdy",
   description: "Logistics made better with Flowdy",
+  manifest: "/manifest.json",
+  themeColor: "#290157",
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "default",
+    title: "Your App Name",
+  },
 };
+
+
 
 export default function RootLayout({
   children,
@@ -40,7 +50,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${dmsans.variable} antialiased`}>
-        <AuthProvider>{children}<WelcomeModal /></AuthProvider>
+        <AuthProvider>
+          {children}
+          <WelcomeModal />
+          <ServiceWorkerRegister />
+        </AuthProvider>
       </body>
     </html>
   );
