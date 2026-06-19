@@ -6,7 +6,9 @@ import {
   LuChevronRight,
   LuDoorClosed,
   LuSchool,
-  LuBuilding2
+  LuBuilding2,
+  LuBus,
+  LuBusFront
 } from 'react-icons/lu'
 
 import HotspotCard from './components/HotspotCard'
@@ -20,18 +22,18 @@ const categories = [
   {
     id: 'gates',
     label: 'Transportation',
-    icon: <LuDoorClosed />,
+    icon: <LuBusFront />,
     className: styles.largeCard
   },
   {
-    id: 'faculties',
-    label: 'Faculties',
+    id: 'hospitality',
+    label: 'Hospitality',
     icon: <LuSchool />,
     className: styles.smallCard
   },
   {
-    id: 'cafeterias',
-    label: 'Buildings',
+    id: 'government',
+    label: 'Agencies',
     icon: <LuBuilding2 />,
     className: styles.smallCard
   }
@@ -103,9 +105,9 @@ export default function HomePage() {
         <div className={styles.section}>
           <div className={styles.sectionHeader}>
             <p className={styles.sectionTitle}>Nearby Hotspots</p>
-            <button className={styles.seeAll}>
+            {/* <button className={styles.seeAll}>
               See all <LuChevronRight size={14} />
-            </button>
+            </button> */}
           </div>
 
           

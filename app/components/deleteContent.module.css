@@ -171,4 +171,20 @@
   font-weight: 600;
 
   cursor: pointer;
+  margin-bottom: 2rem;
+}
+
+.holdBar {
+  width: 100%;
+  height: 6px;
+  background: #eee;
+  border-radius: 999px;
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+
+.holdFill {
+  height: 100%;
+  background: #ef4444;
+  transition: width 0.05s linear;
 }
